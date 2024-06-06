@@ -1,1 +1,21 @@
-/* Plugin Styles */
+#media-player {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.frame {
+    display: none;
+}
+
+.frame.active {
+    display: block;
+}
+
+#media-player-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
