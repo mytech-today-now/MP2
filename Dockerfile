@@ -32,8 +32,9 @@ RUN mkdir -p /var/www/html/wp-content/uploads \
 # Download WordPress core files
 RUN wp core download --allow-root
 
-# Wait for MySQL to be ready and then configure WordPress
-RUN /usr/local/bin/wait-for-it.sh mysql:3306 -- wp config create --dbname=wordpress --dbuser=root --dbpass=root --dbhost=mysql --allow-root
+# Wait for MySQL to be ready and then configure WordPress with error handling
+RUN /usr/local/bin/wait-for-it.sh mysql:3306 --timeout=120 --strict -- \
+    wp config create --dbname=wordpress --dbuser=root --dbpass=root --dbhost=mysql --allow-root || { echo 'MySQL not available, exiting'; exit 1; }
 
 # Install WordPress
 RUN wp core install --url=localhost --title="WordPress Test" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --allow-root

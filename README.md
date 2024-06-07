@@ -13,11 +13,22 @@ This project sets up a Dockerized WordPress instance with PHPUnit testing capabi
 
 ### Clone the Repository
 
-First, clone the repository to your local machine:
+1. First, clone the repository to your local machine:
 
 ```sh
 git clone https://github.com/mytech-today-now/MP2.git
 cd MP2
-launch Docker Desktop
+```
+
+2. Launch Docker Desktop
+
+3. Spin up the instance from scratch:
+```sh
 docker-compose up --build
+```
+
+To stop and remove the instance and network, use:
+
+```sh
+docker-compose down
 ```
