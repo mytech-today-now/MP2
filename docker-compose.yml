@@ -2,7 +2,7 @@ services:
   wordpress:
     build: .
     ports:
-      - "8000:8080"
+      - "8000:80"
     depends_on:
       - mysql
     volumes:
