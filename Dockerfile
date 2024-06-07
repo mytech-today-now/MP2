@@ -18,10 +18,10 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     && mv wp-cli.phar /usr/local/bin/wp \
     && echo "WP-CLI successfully installed."
 
-# Copy the plugin files to the WordPress plugins directory
-chmod -R 777 ./plugin
-COPY ./plugin /var/www/html/wp-content/plugins/plugin \
-&& echo "plugin successfully copied."
+# Set permissions and copy the plugin files to the WordPress plugins directory
+COPY ./plugin /var/www/html/wp-content/plugins/plugin
+RUN chmod -R 777 /var/www/html/wp-content/plugins/plugin \
+    && echo "Plugin successfully copied."
 
 # Copy wait-for-it script
 COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh \
