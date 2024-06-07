@@ -8,6 +8,7 @@ WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
+    mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and configure WordPress CLI
@@ -18,14 +19,14 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 # Copy the plugin files to the WordPress plugins directory
 COPY ./plugin /var/www/html/wp-content/plugins/plugin
 
-# Wait for MySQL to be ready
-RUN sleep 20
+# Copy wait-for-it script
+COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
 
 # Download WordPress core files
 RUN wp core download --allow-root
 
-# Create wp-config.php
-RUN wp config create --dbname=wordpress --dbuser=root --dbpass=root --dbhost=mysql --allow-root
+# Wait for MySQL to be ready and then configure WordPress
+RUN /usr/local/bin/wait-for-it.sh mysql:3306 -- wp config create --dbname=wordpress --dbuser=root --dbpass=root --dbhost=mysql --allow-root
 
 # Install WordPress
 RUN wp core install --url=localhost --title="WordPress Test" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --allow-root
