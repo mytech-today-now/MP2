@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   wordpress:
-    build: .
+    image: wordpressdevelop/phpunit:latest
     ports:
       - "8000:80"
     depends_on:
@@ -11,13 +11,16 @@ services:
       - ./plugin:/var/www/html/wp-content/plugins/plugin
 
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0
     volumes:
       - db_data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: wordpress
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
 
 volumes:
   db_data:
