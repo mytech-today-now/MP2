@@ -8,7 +8,7 @@ WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
-    mysql-client \
+    default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and configure WordPress CLI
@@ -21,6 +21,9 @@ COPY ./plugin /var/www/html/wp-content/plugins/plugin
 
 # Copy wait-for-it script
 COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
+
+# Make the wait-for-it script executable
+RUN chmod +x /usr/local/bin/wait-for-it.sh
 
 # Download WordPress core files
 RUN wp core download --allow-root
