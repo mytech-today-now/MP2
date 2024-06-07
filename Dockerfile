@@ -25,6 +25,10 @@ COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
 # Make the wait-for-it script executable
 RUN chmod +x /usr/local/bin/wait-for-it.sh
 
+# Ensure the uploads directory exists
+RUN mkdir -p /var/www/html/wp-content/uploads \
+    && chown -R www-data:www-data /var/www/html/wp-content/uploads
+
 # Download WordPress core files
 RUN wp core download --allow-root
 
