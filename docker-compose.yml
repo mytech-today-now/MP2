@@ -1,7 +1,3 @@
-# Usage: docker-compose -f docker-compose.yml up -d
-#        docker-compose -f docker-compose.yml down
-#        docker-compose -f docker-compose.yml logs -f
-
 services:
   wordpress:
     build: .
@@ -13,7 +9,7 @@ services:
       - ./plugin:/var/www/html/wp-content/plugins/plugin
 
   mysql:
-    image: mysql:5.7
+    image: mysql:latest
     volumes:
       - db_data:/var/lib/mysql
     restart: always
