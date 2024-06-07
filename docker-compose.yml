@@ -9,7 +9,7 @@ services:
       - ./plugin:/var/www/html/wp-content/plugins/plugin
 
   mysql:
-    image: mysql:latest
+    image: mysql:8.0
     volumes:
       - db_data:/var/lib/mysql
     restart: always
