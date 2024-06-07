@@ -6,8 +6,10 @@ set -e
 host="$1"
 shift
 cmd="$@"
-timeout=60
+timeout=120
 start_time=$(date +%s)
+
+echo "Waiting for MySQL to be available at $host..."
 
 until mysql -h "$host" -u root -proot -e 'SELECT 1' &> /dev/null; do
   >&2 echo "MySQL is unavailable - sleeping"
