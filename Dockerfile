@@ -43,7 +43,7 @@ RUN wp core install --url=localhost --title="WordPress Test" --admin_user=admin 
 RUN wp plugin activate plugin --allow-root
 
 # Expose the port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Start the Apache server
 CMD ["apache2-foreground"]
