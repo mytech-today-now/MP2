@@ -24,8 +24,8 @@ RUN mkdir -p /var/www/html/wp-content/uploads \
 RUN wp core download --allow-root
 
 # Set permissions and copy the plugin files to the WordPress plugins directory
-COPY ./plugin /var/www/html/wp-content/plugins/plugin
-RUN chmod -R 777 /var/www/html/wp-content/plugins/plugin \
+COPY ./plugin /var/www/html/wp-content/plugins/MP2
+RUN chmod -R 777 /var/www/html/wp-content/plugins/MP2 \
     && echo "Plugin successfully copied."
 
 # Copy wait-for-it script

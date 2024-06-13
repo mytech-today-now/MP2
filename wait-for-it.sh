@@ -6,12 +6,14 @@ set -e
 host="$1"
 shift
 cmd="$@"
-timeout=120
+timeout=${WAIT_FOR_IT_TIMEOUT:-120}
+mysql_user=${MYSQL_USER:-root}
+mysql_password=${MYSQL_PASSWORD:-root}
 start_time=$(date +%s)
 
 echo "Waiting for MySQL to be available at $host with timeout of $timeout seconds..."
 
-until mysql -h "$host" -u root -proot -e 'SELECT 1' &> /dev/null; do
+until mysql -h "$host" -u "$mysql_user" -p"$mysql_password" -e 'SELECT 1' &> /dev/null; do
   >&2 echo "MySQL is unavailable - sleeping..."
   sleep 5
 
