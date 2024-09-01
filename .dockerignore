@@ -1,0 +1,63 @@
+# Version control
+.git
+.gitignore
+
+# Docker
+.docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea
+.vscode
+
+# Node modules (if using any build tools)
+node_modules
+
+# Composer dependencies (if using Composer)
+vendor
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# WordPress core files (if you're mounting them as volumes)
+wp-admin
+wp-includes
+wp-content/uploads
+wp-content/upgrade
+wp-content/backup-db
+wp-content/backups
+wp-content/blogs.dir
+wp-content/cache
+wp-content/upgrade
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*.bak
+*.sublime-workspace
+
+# Test and documentation
+tests
+docs
+README.md
+
+# Build files
+build
+dist

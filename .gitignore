@@ -1,0 +1,57 @@
+# WordPress core files
+wp-admin/
+wp-includes/
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/plugins/*
+!wp-content/plugins/media-player-plugin/
+wp-content/themes/*
+!wp-content/themes/twentytwentyfour/
+
+# WordPress configuration
+wp-config.php
+
+# Log files
+*.log
+
+# htaccess
+/.htaccess
+
+# Docker volumes
+db_data/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+
+# Node modules (if using any build tools)
+node_modules/
+
+# Composer dependencies (if using Composer)
+vendor/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*.bak
+*.sublime-workspace
