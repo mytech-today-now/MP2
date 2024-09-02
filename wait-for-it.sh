@@ -8,7 +8,7 @@ shift
 cmd="$@"
 timeout=${WAIT_FOR_IT_TIMEOUT:-120}
 mysql_user="wordpress"
-mysql_password=${MYSQL_ROOT_PASSWORD:-wordpress_password}
+mysql_password=${MYSQL_ROOT_PASSWORD:-wordpress}
 start_time=$(date +%s)
 
 echo "Waiting for MySQL to be available at $host with timeout of $timeout seconds..."
