@@ -2,9 +2,6 @@
 services:
   wordpress:
     image: wordpress:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "8000:80"
     restart: always
@@ -40,9 +37,9 @@ services:
       MYSQL_MAX_CONNECTIONS: 1000
     command: --default-authentication-plugin=mysql_native_password --max_connections=1000
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "wordpress", "-pwordpress_password"]
       timeout: 5s
-      retries: 5
+      retries: 10
       interval: 5s
       start_period: 40s
 
